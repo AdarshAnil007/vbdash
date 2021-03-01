@@ -1,0 +1,104 @@
+.jumbotron {
+    height:auto;
+    padding : 5px 5px 5px 5px;
+    margin :0px;
+    background : rgb(255, 255, 255);
+    color : rgb(46, 46, 46);
+	
+}    
+
+.body {
+    background-color: whitesmoke;
+	overflow-Y:scroll;
+	font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+.logo 
+{
+	
+    width: 80%;
+    height: 80%;
+    
+    }
+
+
+	#mySidenav a 
+	{
+		margin-top: 210px;
+		position: fixed; /* Position them relative to the browser window */
+		left: -40px; /* Position them outside of the screen */
+		transition: 0.3s; /* Add transition on hover */
+		padding: 15px; /* 15px padding */
+		width: 100px; /* Set a specific width */
+		text-decoration: none; /* Remove underline */
+		text-align: right;
+		font-size: 20px; /* Increase font size */
+		color: white; /* White text color */
+		border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+	  }
+	  
+	  #mySidenav a:hover {
+		left: 0; /* On mouse-over, make the elements appear as they should */
+	  }
+	  
+	  /* The about link: 20px from the top with a green background */
+	  #home {
+		top: 20px;
+		background-color: #4CAF50;
+	  }
+	  
+	  #mapside {
+		top: 80px;
+		background-color: #2196F3; /* Blue */
+	  }
+	  
+	  #chartside {
+		top: 140px;
+		background-color: #f44336; /* Red */
+	  }
+	  
+	  #tableside {
+		top: 200px;
+		background-color: #555 /* Light Black */
+	  }
+
+	  .details{
+		  font-family: Arial, Helvetica, sans-serif;
+		  font-size: x-large;
+		  font-weight: bold;
+		  text-align: center;
+
+	  }
+
+	  .detval{
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 90px;
+		font-weight: bold;
+		color: rgb(0, 0, 0);
+		text-align: center;
+		text-shadow: 1px 4px 6px #c6c6c6, 0 0 0 #000, 1px 4px 6px #c6c6c6;
+		
+		
+	  }
+
+	  .detval2{
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 30px;
+		font-weight: bold;
+		color: rgb(0, 0, 0);
+		text-align: center;
+		text-shadow: 1px 4px 6px #c6c6c6, 0 0 0 #000, 1px 4px 6px #c6c6c6;
+		
+		
+	  }
+
+	  .page-title{
+		margin-bottom:5px;
+	  text-shadow: 1px 4px 6px #c6c6c6, 0 0 0 #000, 1px 4px 6px #c6c6c6;
+	  font-size: 32px;
+			font-weight:500;
+			display:block;
+			
+		
+	}

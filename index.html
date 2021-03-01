@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="new.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        history.scrollRestoration = "manual";
+        $(document).ready(function () {
+            $(window).scrollTop(0);
+        });
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+
+<body class="body">
+    <div class="jumbotron jumbotron-fluid shadow p-3 mb-5 bg-white rounded sticky-top">
+        <div class="container-fluid">
+            <div class="row row-header">
+                <div class="col-12 col-sm-2 text-center">
+                    <img src="https://eyic.e-yantra.org/img/eYantra_logo_whitetext.png" class="logo" alt="E-yantra">
+                </div>
+                <div class="col-12 col-sm-8 text-center page-title">
+                    <h1>Inventory Management</h1>
+
+                </div>
+                <div class="col-12 col-sm text-right page-title">
+                    <h3>VB#215</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid" style="padding-left: 5%; padding-top: 1%;">
+        <div class="row">
+            <div class="col-6 col-sm-2 page-title" id="part1">
+                <p>Dashbaord</p>
+
+            </div>
+            <div class="col-sm-10">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-1">
+                <div id="mySidenav" class="sidenav">
+                    <a href="#part1" id="home"><i class="fa fa-dashboard"></i></a>
+                    <a href="#part2" id="mapside"><i class="fa fa-map-marker"></i></a>
+                    <a href="#part3" id="chartside"><i class="fa fa-bar-chart-o"></i></a>
+                    <a href="#part4" id="tableside"><i class="fa fa-bars"></i></i></a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-3">
+
+
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-sm-8 jumbotron shadow-sm p-3 mb-5 bg-white rounded">
+                        <div class="details">ORDER REMAINING </div>
+                        <div class="detval" id="ore" style="min-height: 150px;">
+
+                            <div id="odr"></div>>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-sm-8 jumbotron shadow-sm p-2 mb-5 bg-white rounded">
+                        <div class="details">TOTAL ORDERS </div>
+                        <div class="detval" id="tord" style="min-height: 150px;">
+
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-12 jumbotron shadow-sm p-2 mb-5 bg-white rounded">
+                        <div class="details"> TOTAL TIME TAKEN </div>
+                        <div class="detval" id="tmk" style="min-height: 150px;">
+
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <br>
+            </div>
+
+            <div class="col-12 col-sm-7">
+                <div class="col">
+
+                    
+
+
+
+                    <div class="row-sm-3">
+                        <div class="container" id="part2">
+                            <div class="jumbotron jumbotron-fluid shadow p-3 mb-5 bg-white rounded" id="map"
+                                style="height: 730px;">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-1">
+            </div>
+
+            <div class="col-sm-10">
+                <div class="jumbotron-fluid shadow p-3 mb-5 bg-white rounded" id="part3">
+                    <div id="column_chart" style="width: 100%; height: 250px;"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-1">
+            </div>
+
+            <div class="col-sm-10">
+                <div class="jumbotron-fluid shadow p-3 mb-5 bg-white rounded" id="part4">
+                    <div class="table_container">
+                        <table id="table1" class="table">
+                            <thead>
+                                <tr>
+                                    <th>ORDER ID</th>
+
+                                    <th>ITEM</th>
+                                    <th>PRIORITY</th>
+
+                                    <th>CITY</th>
+                                    <TH>DISPATCHED</TH>
+                                    <TH>SHIPPED</TH>
+                                    <TH>ORDER DATE AND TIME</TH>
+                                    <TH>DISPATCH DATE & TIME</TH>
+                                    <TH>SHIPPING DATE & TIME</TH>
+                                    <th>TIME TAKEN</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableContent">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+
+<script>
+    $(function () {
+        $('a[href*=#]:not([href=#])').click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top   //scroll animation for the nav links
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="Leaflet.MakiMarkers.js"></script>
+<script type="text/javascript">
+    var trHTML = '';
+    var jsonDataObject = [];
+    var leng = 0;
+    var shnm=0;
+    
+    var flag=1;
+    /////////////Ajax Requests////////////
+    $(document).ready(function () {
+        // Fetch the initial Map
+        refreshMap();
+
+        setInterval(refreshMap, 1000);
+    });
+    google.charts.load("current", { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(refreshChart);
+
+    function refreshMap() {
+
+        var container = L.DomUtil.get('map');
+
+        if (container != null) {
+            container._leaflet_id = null;
+        }
+
+        var map = L.map('map').setView([20.5937, 78.9629], 4);
+
+
+        L.MakiMarkers.accessToken = "pk.eyJ1IjoiYWRuMDA3IiwiYSI6ImNra3c3OWJoNTAyaGkydmw2ODgwODhveGIifQ.p2s9nrejVow6hdlEux4GKA";
+
+        var red_icon = L.MakiMarkers.icon({ icon: "shop", color: "FF0000", size: "m" });
+        var green_icon = L.MakiMarkers.icon({ icon: "shop", color: "00FF00", size: "m" });
+        var yellow_icon = L.MakiMarkers.icon({ icon: "shop", color: "#FFFF00", size: "m" });
+
+        $.getJSON('https://spreadsheets.google.com/feeds/list/1ypG2lfDja1fzek7FgtIuLI7fYsapa1smcKViIIxCNjA/3/public/full?alt=json', function (data) {
+
+            var timtkn=0;
+            var x = data.feed.entry.length;
+            shnm=data.feed.entry.length;
+            document.getElementById("tord").innerHTML = x ;
+            
+
+                
+                jsonDataObject = [];
+                trHTML = '';
+                for (var i = 0; i < data.feed.entry.length; ++i) {
+
+
+                    trHTML += '<tr><td>' + data.feed.entry[i].gsx$orderid.$t +
+                        '</td><td>' + data.feed.entry[i].gsx$item.$t +
+                        '</td><td>' + data.feed.entry[i].gsx$priority.$t +
+
+                        '</td><td>' + data.feed.entry[i].gsx$city.$t +
+                        '</td><td>' + data.feed.entry[i].gsx$dispatchstatus.$t +
+                        '</td><td>' + data.feed.entry[i].gsx$shippedstatus.$t +
+                        '</td><td>' + data.feed.entry[i].gsx$orderreceived.$t +
+                        '</td><td>' + data.feed.entry[i].gsx$dispatchtime.$t +
+                        '</td><td>' + data.feed.entry[i].gsx$shippedtime.$t +
+                            '</td><td>' + data.feed.entry[i].gsx$timetaken.$t +
+
+                        '</td></tr>';
+
+                    var json_data = {
+                        "City": data.feed.entry[i].gsx$city.$t,
+                        "OderID": data.feed.entry[i].gsx$orderid.$t,
+                        "Item": data.feed.entry[i].gsx$item.$t,
+                        "Latitude": parseFloat(data.feed.entry[i].gsx$latitude.$t),
+                        "Longitude": parseFloat(data.feed.entry[i].gsx$longitude.$t),
+                        "dsta": data.feed.entry[i].gsx$dispatchstatus.$t,
+                        "ssta": data.feed.entry[i].gsx$shippedstatus.$t,
+                        "TimeTaken": parseFloat(data.feed.entry[i].gsx$timetaken.$t),
+                        "Priority": data.feed.entry[i].gsx$priority.$t,
+                        "ddt": data.feed.entry[i].gsx$dispatchtime.$t,
+                        "sdt": data.feed.entry[i].gsx$shippedtime.$t,
+                        "ordrec": data.feed.entry[i].gsx$orderreceived.$t,
+                        "tita" : data.feed.entry[i].gsx$timetaken.$t,
+                    };
+                    jsonDataObject.push(json_data);
+                var t=data.feed.entry[i].gsx$timetaken.$t;
+                        if(t!=""){
+                    timtkn=timtkn+parseFloat(data.feed.entry[i].gsx$timetaken.$t);}
+                
+                    if(data.feed.entry[i].gsx$shippedstatus.$t =="YES")
+                    {
+                        shnm=shnm-1;
+                    }
+
+                    for (var j = 0; j < jsonDataObject.length; j++) {
+                        if (jsonDataObject[j].dsta == "") {
+                            var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), { icon: red_icon });
+                            marker.bindPopup(jsonDataObject[j].City, {
+                                autoClose: false
+                            });
+                        }
+                        else if (jsonDataObject[j].dsta == "YES" && jsonDataObject[j].ssta == "") {
+                            var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), { icon: yellow_icon });
+                            marker.bindPopup(jsonDataObject[j].City, {
+                                autoClose: false
+                            });
+                        }
+                        else if (jsonDataObject[j].dsta == "YES" && jsonDataObject[j].ssta == "YES") {
+                            
+            
+                            var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), { icon: green_icon });
+                            marker.bindPopup(jsonDataObject[j].City, {
+                                autoClose: false
+                            });
+                        }
+                        map.addLayer(marker);
+                        marker.on('click', onClick_Marker)
+                        // Attach the corresponding JSON data to your marker:
+                        marker.myJsonData = jsonDataObject[j];
+
+                        function onClick_Marker(e) {
+                            var marker = e.target;
+                            popup = L.popup()
+                                .setLatLng(marker.getLatLng())
+                                .setContent("Order ID: " + marker.myJsonData.OderID + " || Item: " + marker.myJsonData.Item)
+                                .openOn(map);
+                        }
+
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(map);
+
+
+                    }
+                    document.getElementById("ore").innerHTML = shnm ;
+                }
+                document.getElementById("tmk").innerHTML = timtkn ; 
+                var graph_arr = [['Order ID', 'Time Taken', { role: 'style' }]];
+                var bar_color = [];
+
+                // Setting color for the coloumns of graph according to priority of items
+                for (var j in jsonDataObject) {
+                    if (jsonDataObject[j].Priority == 'HP') {
+                        var color = '#FF0000';
+                    }
+                    else if (jsonDataObject[j].Priority == 'MP') {
+                        var color = '#FFFF00';
+                    }
+                    else if (jsonDataObject[j].Priority == 'LP') {
+                        var color = '#00FF00';
+                    }
+                    bar_color.push(color)
+                }
+
+                // Converting Json Object to JavaScript Array
+                for (var j in jsonDataObject) {
+                    graph_arr.push([jsonDataObject[j].OderID, jsonDataObject[j].TimeTaken, bar_color[j]]);
+                }
+                var graphArray_Final = google.visualization.arrayToDataTable(graph_arr);
+
+                var data = new google.visualization.DataView(graphArray_Final);
+
+                var options = {
+                    title: 'Time Taken for items to be Shipped',
+                    hAxis: { title: 'Order ID' },
+                    vAxis: { title: 'Time Taken (s)' },
+                    legend: { position: "none" },
+                };
+                var chart = new google.visualization.ColumnChart(document.getElementById('column_chart'));
+                chart.draw(data, options);
+
+                console.log(trHTML);
+                $('#tableContent').html(trHTML);
+
+            
+            
+            leng=x;
+
+      });
+    }
+
+
+
+</script>
+
+</html>
